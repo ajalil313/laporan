@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Laporan Kewangan Premis</title>
+	
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+		<img src="img/gisbhlogo.png">			
+	<div class="container">
+		<h1>Laporan Kewangan </h1>
+		<div class="div-p"><p>Ikhwan Mart Sungai Penchala</p></div>
+		<div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert" ></div>
+		<form name="laporan-form">
+			<label for="name">Tarikh:</label>
+			<input class="input-data" type="date" name="Tarikh" id="tarikh" required=""/>
+
+			<label for="kemasukan">Kemasukan:</label>
+			<input class="input-data" type="number" name="Kemasukan" id="kemasukan" required=""/>
+
+			<label for="keluaran">Keluaran:</label>
+			<input class="input-data" type="number" name="Keluaran" id="keluaran" required=""/>
+
+			<label for="serahan">Serahan:</label>
+			<input class="input-data" type="number" name="Serahan" id="serahan" required=""/><br>
+		<div class="div-main">
+			<div class="div-hantar"><button class="button-hantar" type="submit" name="submit" >Hantar</button></div>
+			<div class="div-link"><a href="paparandata.html">Papar data</a></div>	
+			<div class="div-tutup"><input class="input-tutup" type ="button" value="Tutup" onclick="self.close()"></div>
+		</div>
+		</form>
+
+	</div>
+  
+
+
+ <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycby6hBXLm44lFuz1mU8elm38SaiEaQ4xWJG9DzErNrPugVw3Cj2psyiePA-IqSz45hU2/exec';
+  const form = document.forms['laporan-form'];
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    	fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    	.then(response => alert("Alhamdulillah, data sudah dimasukan...! Syukran..."))
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  	  form.reset();     
+  })
+	</script>
+</body>
+</html>
